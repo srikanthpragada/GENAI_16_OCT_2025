@@ -11,4 +11,5 @@ response = client.responses.create(
     input="What is the capital of Spain?"
 )
 
+#print(response)
 print(response.output_text)
