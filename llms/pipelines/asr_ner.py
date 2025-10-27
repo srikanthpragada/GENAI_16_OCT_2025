@@ -4,7 +4,7 @@ from transformers import pipeline
 asr = pipeline("automatic-speech-recognition",  model="openai/whisper-base")
 
 # Path to your audio file (.wav or .mp3)
-audio_path = "./pipelines/mlk_clip.mp3"   
+audio_path = "./llms/pipelines/mlk_clip.mp3"   
 
 # Transcribe the audio
 result = asr(audio_path, return_timestamps=True,
