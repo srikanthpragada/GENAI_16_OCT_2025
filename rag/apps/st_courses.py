@@ -6,8 +6,6 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.chat_models import init_chat_model
 import streamlit as st 
 import os 
-from langchain_core.messages import SystemMessage, HumanMessage , AIMessage
-
 
 loader = PyPDFLoader(
     r"../docs/courses_offered.pdf",
@@ -45,32 +43,19 @@ Context : {context}
 Question:{question}
 """
 
-def new_chat():
-    print("Handling the button!")
-    st.session_state.prompt = ""
-    st.session_state.messages = []
-
 prompt  = PromptTemplate.from_template(prompt_template)
 
 retriever = db.as_retriever()
 
-if 'messages' not in st.session_state:
-    st.session_state.messages = [
-        SystemMessage("You are an assistant that answers based on provided context. ")
-    ]
-   
 
 st.title("Courses RAG Demo")
-query = st.text_input("Enter your query :", key = "prompt" , autocomplete = 'false')
-st.button("New Chat", on_click=new_chat)
+query = st.text_input("Enter your query :",  autocomplete = 'false')
    
-
 if len(query) > 0:
     results = retriever.invoke(query)
     matching_docs_str = "\n".join([doc.page_content for doc in results])
     final_prompt = prompt.format(context=matching_docs_str, question=query)
-    st.session_state.messages.append(HumanMessage(final_prompt))
-    result =  llm.invoke(st.session_state.messages)
+    result =  llm.invoke(final_prompt)
     st.write(result.content)
-    st.session_state.messages.append(result)
+
     
