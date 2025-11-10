@@ -33,14 +33,15 @@ gemini = init_chat_model(
 
 system_message = SystemMessage(
     "You are a helpful weather assistant.If needed, find out latitude and logitude then provide to tool. ")
-user_message = HumanMessage("What is the weather in Perth")
+#user_message = HumanMessage("What is the weather in Perth")
+user_message = HumanMessage("What is the capital of Australia")
 
 messages = [
     system_message,
     user_message
 ]
 
-gemini_with_tools = gemini.bind_tools([get_coordinates, get_weather])
+gemini_with_tools = gemini.bind_tools([get_coordinates,get_weather])
 
 for step in range(5):
     response = gemini_with_tools.invoke(messages)
