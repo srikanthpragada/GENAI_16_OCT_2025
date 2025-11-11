@@ -13,7 +13,7 @@ tools = [search]
 agent = create_agent(model, tools, checkpointer=memory)
 
 # thread is identifies the session 
-config = {"configurable": {"thread_id": "abc123"}}
+config = {"configurable": {"thread_id": "1"}}
 
 human_message = HumanMessage("Hi, I'm Srikanth and I live in Visakhapatnam.")
 

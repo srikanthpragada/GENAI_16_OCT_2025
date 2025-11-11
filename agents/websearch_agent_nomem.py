@@ -16,6 +16,7 @@ response = agent.invoke({"messages": [human_message]})
 for message in response["messages"]:
     message.pretty_print()
 
+
 human_message = HumanMessage("Search for the weather where I live")
 response = agent.invoke({"messages": [human_message]})
 
