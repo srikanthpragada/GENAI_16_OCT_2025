@@ -1,0 +1,9 @@
+{
+  "$schema": "https://langgra.ph/schema.json",
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./go_left_right.py:graph"
+  },
+  "env": ".env",
+  "image_distro": "wolfi"
+}
