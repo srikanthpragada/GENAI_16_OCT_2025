@@ -2,7 +2,7 @@ from fastmcp import FastMCP
 from datetime import datetime 
 
 # Create an MCP server
-mcp = FastMCP("Add Server")
+mcp = FastMCP("MCP Server")
 
 
 # Add an addition tool

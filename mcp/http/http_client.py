@@ -6,10 +6,6 @@ import asyncio
 transport = StreamableHttpTransport(url="http://127.0.0.1:9999/mcp")
 client = Client("http://127.0.0.1:9999/mcp")
 
-
-# # Connect to the Add Server using STDIO transport
-# client = Client(transport)
-
 async def call_tool():
     async with client:
         # List available tools from the server
@@ -34,6 +30,10 @@ async def call_tool():
 
         # Call resource 
         result = await client.read_resource("resource://greeting/Srikanth")
+        print(result[0].text)
+
+        # Call resource 
+        result = await client.read_resource("resource://today")
         print(result[0].text)
 
 

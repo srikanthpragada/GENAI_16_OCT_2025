@@ -8,5 +8,5 @@ def get_greeting(name : str) -> str:
     """Provides a simple greeting message."""
     return f"Hello {name}, welcome to MCP Server Resource"
 
- 
-mcp.run(transport="http", port=9999)
+if __name__ == '__main__':
+    mcp.run(transport="http", port=9999)

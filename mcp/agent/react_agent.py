@@ -4,7 +4,7 @@ from langchain.chat_models import init_chat_model
 import asyncio
 
 clients = MultiServerMCPClient(
-    {"Number Server": {
+    {"Math Server": {
         "url": "http://localhost:9999/mcp",
         "transport": "streamable_http"},
      "File Server:": {
@@ -18,6 +18,9 @@ clients = MultiServerMCPClient(
 
 async def process():
     tools = await clients.get_tools()
+    for tool in tools:
+        print(tool.name)
+
     model = init_chat_model("gemini-2.5-flash", model_provider="google_genai")
     agent = create_agent(model, tools)
     prime_response = await agent.ainvoke({"messages": "is 383843 a prime number?"})
