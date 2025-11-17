@@ -15,14 +15,14 @@ system_message = SystemMessage(
     content=
     """You are a code reviewer. 
     Review the code and write your suggestions to file with same primary filename and .review extension 
-    Use folder is c:\\classroom\\genai\\gemini by default unless specified otherwise
+    Use folder is c:\\classroom\\oct16 by default unless specified otherwise
     """)
 async def process():
     tools = await clients.get_tools()
     model = init_chat_model("gemini-2.5-flash", model_provider="google_genai")
     agent = create_agent(model, tools)
     human_message = HumanMessage(
-        content="Review the code in rag_web_andrew.py. Use folder c:\\classroom\\genai\\rag")
+        content="Review the code in math_agent.py in c:\\classroom\\oct16\\agents folder")
     response = await agent.ainvoke(
         {"messages": [system_message, human_message]})
     #print(response["messages"][-1].content)
